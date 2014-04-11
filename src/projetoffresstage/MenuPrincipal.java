@@ -6,9 +6,14 @@
 
 package projetoffresstage;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import static projetoffresstage.MainProjet.lesEntreprises;
+import static projetoffresstage.MainProjet.lesOffres;
 
 
 /**
@@ -21,6 +26,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        //sérialisation lors du lancement de la frame
+        try
+            {
+                FileInputStream f = new FileInputStream("sauvegarde.csv");
+                ObjectInputStream s = new ObjectInputStream(f);
+                MainProjet.lesEntreprises = (ArrayList<Entreprise>) s.readObject(); 
+                MainProjet.lesOffres = (ArrayList<OffreStage>) s.readObject();
+                }
+                catch(IOException e) {System.out.println("Nouveau fichier");}
+                catch(ClassNotFoundException e) {System.out.println("Probleme");}
         
        
         
@@ -161,7 +176,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      s.writeObject(MainProjet.lesOffres);
      s.close();
     }
-    catch (IOException e) {System.out.println("Problème I/O");}
+    catch (IOException e) {System.out.println("Problème I/O");
+    System.out.println(e);}
 
        
        

@@ -6,11 +6,13 @@
 
 package projetoffresstage;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kilavuz
  */
-public class Entreprise {
+public class Entreprise implements Serializable {
     
     private String nom;
     private String adresseRueEntreprise;

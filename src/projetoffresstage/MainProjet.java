@@ -21,22 +21,13 @@ public class MainProjet {
 
  
     // Declaration de nos collections
-    public static ArrayList<OffreStage> lesOffres = new ArrayList ();
-    public static ArrayList<Entreprise> lesEntreprises = new ArrayList ();
+    public static ArrayList<OffreStage> lesOffres = new ArrayList<OffreStage> ();
+    public static ArrayList<Entreprise> lesEntreprises = new ArrayList<Entreprise> ();
             
     public static void main(String[] args) {
-        //Serialisation
-        try
-            {
-                FileInputStream f = new FileInputStream("sauvegarde.csv");
-                ObjectInputStream s = new ObjectInputStream(f);
-                lesEntreprises = (ArrayList) s.readObject(); 
-                lesOffres = (ArrayList) s.readObject();
-                }
-                catch(IOException e) {System.out.println("Nouveau fichier");}
-                catch(ClassNotFoundException e) {System.out.println("Probleme");}
+
+
                 MenuPrincipal menuPrincipal = new MenuPrincipal();
                 menuPrincipal.setVisible(true);
     }
-    
 }
